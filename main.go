@@ -61,7 +61,7 @@ func main() {
 			continue
 		}
 
-		_, err = newFile.Write([]byte(fmt.Sprintf("\"%s\":\"%s\"\n", k, v)))
+		_, err = newFile.Write([]byte(fmt.Sprintf("\"%s\",\"%s\"\n", k, strings.ReplaceAll(fmt.Sprintf("%v", v), "\"", "'"))))
 		if err != nil {
 			exitWithError("Error writing to file")
 		}
